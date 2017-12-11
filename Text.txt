@@ -1,0 +1,264 @@
+迭代器:Interator
+Interator iterator=map.entrySet().iterator();
+while(interator.hasNext()){
+	Object next=interator.next();
+	Map.Entry entry=(Map.Entry)next;
+	System.out.println("key为:"entry.getKey()+"value为"+entry.getValue());
+}
+
+
+Set set=map.entrySet()
+    for(Object o : set){
+	Map.entry  me=(Map.entry)o;
+	System.out.println(me.getKey()+" "+me.getValue());
+    }
+
+
+for(Object o: map.keySet()){
+	System.out.println(map.get(o));
+}
+
+for(Object o: map.valueSet()){
+	System.out.println(o);
+}
+
+
+
+interator.hasNext():如果有下一个,则返回true,进入到while循环
+获得的对象是Object类型的,父类的引用next,值能使用父类的方法无法使用子类独有的方法
+Map.Entry entry= (Map.Entry) next;所以要把next强转成子类
+
+//下面的写法是面向接口编程
+List<String> list=new ArrayList<>();
+list.add("王五");//添加元素到list里面
+//增强for循环不能改变集合中的元素
+for(Strign s : list){
+	s="李四";
+}
+//不会被改成李四
+
+Map<String,Student>map=new HashMap<>();
+map.put("张三",new Student());
+Student zs=map.get("李四");
+System.out.println(zs);
+
+
+
+List<Rice>  first=new ArrayList<>();
+first.add(new Rice("大米"));
+List<Rice>  second=new ArrayList<>();
+second.add(new Rice("小麦"));
+
+List<List<Rice>> fan=new ArrayList<>();
+fan.add(first);
+fan.add(second);
+
+
+解释:first和second是创建的两个list集合类型为Rice类,
+向Rice传入大米与小麦,两个元素是分别的放在了一个list中
+fan.add(first);//取出大米
+fan.add(second);//取出小麦
+
+
+
+
+public static void main(String[] args) {  
+//        Scanner scanner = new Scanner(System.in);  
+//        System.out.print("请输入总人数：");  
+//        int totalNum = scanner.nextInt();  
+//        System.out.print("请输入报数的大小：");  
+//        int cycleNum = scanner.nextInt();  
+//        System.out.print("请输入开始编号：");  
+//        int  startNO= scanner.nextInt();  
+//        yuesefu(totalNum, cycleNum,startNO);  
+        yuesefu(5, 2,3);  
+    }  
+   
+   public static void yuesefu(int totalNum, int countNum,int startNO) {  
+        // 初始化人数  
+        List<Integer> start = new ArrayList<Integer>();  
+        for (int i = 1; i <= totalNum; i++) {  
+            start.add(i);  
+        }  
+        //从下标为K开始计数  
+        int k = startNO-1;  
+        while (start.size() >0) {  
+            System.out.println(start);
+            //第m人的索引位置  
+            k = (k + countNum) % (start.size()) - 1;  
+           // 判断是否到队尾  到队尾时候k=-1
+            if (k < 0) {  
+                System.out.println(start.get(start.size()-1));  
+                start.remove(start.size() - 1);  
+                k = 0;  
+            } else {  
+                System.out.println(start.get(k));  
+                start.remove(k);  
+            }  
+        }  
+    }  
+
+
+异常:
+	try-catch异常:
+		在try中写可能会出现的异常的代码,如果在执行代码是,出现异常,则程序会跳转n,catch块中
+
+
+
+
+public void showName(String... names){
+	for(String name : names){
+}
+}
+
+
+
+public static String reverse(String s) {
+    if (s == null) {
+      return s;
+    }
+    int i = s.indexOf(" ");
+    if (i == -1) {
+      return s;
+    }
+    return reverse(s.substring(i + 1)) + " " + s.substring(0, i);
+  }
+
+
+
+int length = s.length();  
+        if (length <= 1)  
+            return s;  
+        String left = s.substring(0, length / 2);  
+        String right = s.substring(length / 2, length);  
+        return reverse1(right) + reverse1(left);
+
+
+用类帮助我们经.xml文件弄到java世界中来的一个工具类
+SAXReader saxReader=new SAXReader(); 
+Document document=saxReader.read(new File("src/data.xml"));
+//获得文档最外层标签(根元素)
+//获得文档的根节点,就是data.xml中的<students>标签
+Element student=rootElement.element("student");
+//获得<students>中的<sutdent>标签
+Element student=rootElement.element("student");
+//获得<student>标签下的name属性
+Attribute name=student.attribute("name");
+//获得name属性的值
+String value=name.getValue();
+System.out.println(value);
+
+
+<students>
+    <!--
+    student这个标签,称为Students的子标签
+    name称为:Student标签的属性
+    "张三":name属性的值
+    -->
+    <student name="张三">
+        <!--score是Student的子标签
+        200是标签中的文本
+        -->
+        <score>200</score>
+    </student>
+    <student name="李四">
+        <score>100</score>
+    </student>
+</students>
+
+
+Element rootElement=document.getRootElement();
+
+
+第一种写法
+1创建一个Runnable类接口的实现类,实现run()方法
+thread=new Thread(new 实现类());
+
+
+
+3定义一个在内部的类,叫做内部类,
+什么是匿名内部类:没有名字的的类叫匿名对象,这个类又写在另一个类内部
+thread=new Thread(new Runnable(){
+	@Override
+	public void run(){
+		for(int i=0;i<1000;i++){
+			System.out.println("我是匿名内部类中的run:"+i);
+		}
+	}
+});
+
+2创建一个类extends Thread,,实现run()方法
+for(int i=0;i<10000;i++>){
+	//Thread的静态方法curremtHread
+	//可以帮我们获得当前正在执行的线程对象
+	//调用这个线程对象的getName方法获得名字
+	System.out.println(Thread.currentThread().getName()+"--------"+i);
+}
+
+
+4thread=new Thread(){
+	@Override
+	public void run(){
+		super.run();
+	}
+}
+
+
+//start方法才是真正开启一个线程的方法
+thread.run(),只是调用了某个对象的某个方法,并没有开启线程,自然也就不会出现相互替换的现象
+
+
+什么是GC
+
+GC是java中的垃圾回收机制java在内存中缓存的对象,程序员是不能手动销毁的,这也是java相对c预言的一个好处
+c的程序员都需要手动销毁内存中不用的对象而我们java程序员就不用需要做这个工作java内部的机制帮助我们管理内存
+GC就是帮我们把内存中不用的UI对象销毁掉,释放内存空间
+
+当一个main方法执行时实际是启动了两个线程一个是我们能看见的主线程一个是在后台运行,我们看不见的Gc
+GC什么时候销毁对象有它自己决定,我们无法决定
+
+
+
+
+线程的抢占式执行
+多个线程共同去争抢CPU的执行权谁抢到了谁就执行,所以会看到多个线程交替输出信息
+
+
+调研是什么
+为什么局部变量在内部类中使用时一定要final修饰
+自己去百度
+
+
+什么叫原子性操作?
+int a=1;是原子性操作
+int b=a+1;不是原子性操作
+第一步:找到a的值
+第二部:把a的值与1相加的到和
+第三步:把和给b
+
+
+synchronize
+同步:如果你先开始了,那等你干完了我再开始
+异步:各干各的:
+
+
+例子
+
+public static void main(String[] args) {
+        TicketDemo ticketDemo=new TicketDemo();
+        startSell(ticketDemo);
+        startSell(ticketDemo);
+        startSell(ticketDemo);
+        startSell(ticketDemo);
+    }
+
+private static void startSell(TicketDemo ticketDemo){
+	new Thread(new Runable(){
+	@Override
+	public void run(){
+	//在这个线程中,调用ticheDemo的方法
+	//我们说这个现象为:线程进入了sellTicker()方法;
+	tickerDemo.sellTicker();
+	}
+}).start();
+}
