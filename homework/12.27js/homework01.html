@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .big{
+            width: 500px;
+            height: 600px;
+            margin: auto;
+            padding: 5px;
+            border: solid 1px red;
+        }
+        .left{
+            width: 300px;
+            height: 600px;
+            float: left;
+            border: solid 1px yellow;
+        }
+        .top{
+            width: auto;
+            height: 38px;
+            background-color: blue;
+            margin: auto;
+        }
+        #btn{
+
+        }
+        .haha{
+            width: 50px;
+            height: 50px;
+            margin: auto;
+            background-color: blueviolet;
+        }
+        .right{
+            float: right;
+            visibility: hidden;
+        }
+        button{
+            width: 50px;
+            height: 30px;
+        }
+        .btncr{
+            background-color: red;
+        }
+        .btncy{
+            background-color: yellow;
+        }
+        .btncg{
+            background-color: blue;
+        }
+        .color{
+            /*margin-bottom: 15px;*/
+        }
+        .naniu{
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+        #btn{
+            font-size: 10px;
+        }
+    </style>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class="big">
+    <div class="left">
+        <div class="top"><p id="btn">点击设置颜色</p> </div>
+        <div class="haha" id="ha">哈哈</div>
+    </div>
+    <div class="right" id="btnr">
+        <div class="color">
+            <p>选择颜色</p>
+            <button type="button" class="btncr" id="btncr1">红</button>
+            <button type="button" class="btncy" id="btncy1">黄</button>
+            <button type="button" class="btncg" id="btncg1">绿</button>
+        </div>
+        <div class="width">
+            <p>选择宽度</p>
+            <button type="button" id="btnw1">100</button>
+            <button type="button" id="btnw2">200</button>
+            <button type="button" id="btnw3">300</button>
+        </div>
+        <div class="height">
+            <p>选择宽度</p>
+            <button type="button" id="btnh1">100</button>
+            <button type="button" id="btnh2">200</button>
+            <button type="button" id="btnh3">300</button>
+        </div>
+        <div class="naniu">
+            <button type="button" id="sz">设置</button>
+            <button type="button" id="qd">确定</button>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $('#btn').click({"width":"50px"},function () {
+        $('#btnr').css({"visibility":"visible"})
+    })
+    $('#btncr1').click(function () {
+        $('#ha').css({"background-color":"red"})
+    })
+    $('#btncy1').click(function () {
+        $('#ha').css({"background-color":"yellow"})
+    })
+    $('#btncg1').click(function () {
+        $('#ha').css({"background-color":"blue"})
+    })
+    $('#btnw1').click(function () {
+        $('#ha').css({"width":"100px"})
+    })
+    $('#btnw2').click(function () {
+        $('#ha').css({"width":"200px"})
+    })
+    $('#btnw3').click(function () {
+        $('#ha').css({"width":"300px"})
+    })
+    $('#btnh1').click(function () {
+        $('#ha').css({"height":"100px"})
+    })
+    $('#btnh2').click(function () {
+        $('#ha').css({"height":"200px"})
+    })
+    $('#btnh3').click(function () {
+        $('#ha').css({"height":"300px"})
+    })
+    $('#sz').click(function () {
+        $('#ha').css({"height":"50px","width":"50px","margin":"auto","background-color":"blueviolet"})
+    })
+    $('#qd').click(function () {
+        $('#btnr').css({"visibility":"hidden"})
+    })
+</script>
+</html>

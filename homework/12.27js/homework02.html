@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json拉取天气</title>
+    <script src="JS/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<button id="btn">点击获取天气</button>
+<div></div>
+</body>
+<script type="text/javascript">
+   $('#btn').click(function () {
+       $.getJSON({url : "http://api.k780.com/?app=weather.today&weaid=10&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json&jsoncallback=?",
+               dataType : "jsonp",
+               type:"Post",
+               jsonpCallback: "jsonpCallback"},
+           function (data,status) {
+               console.log(status);
+               console.log(data);
+               $.each(data,function (i,data) {
+                   $('div').text("城市:"+ data["citynm"] + "天气:" + data["weather"])
+               })
+           })
+   })
+
+</script>
+</html>
