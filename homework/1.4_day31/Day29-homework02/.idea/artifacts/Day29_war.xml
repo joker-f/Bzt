@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Day29:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/Day29_war</output-path>
+    <root id="archive" name="Day29_war.war">
+      <element id="artifact" artifact-name="Day29-homework02:war exploded" />
+      <element id="module-output" name="Day29-homework02" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-beanutils-1.8.3" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
